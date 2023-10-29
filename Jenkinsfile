@@ -34,7 +34,7 @@ pipeline {
 'DOCKER_USERNAME', passwordVariable:
  
 'DOCKER_PASSWORD')]) {
-            sh "docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD ${registryURL}"
+            sh "docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD $my-node-app:latest"
           }
           
           sh "docker tag ${imageName} ${registryURL}/${imageName}"
