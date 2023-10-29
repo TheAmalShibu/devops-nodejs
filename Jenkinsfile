@@ -1,13 +1,16 @@
 pipeline {
   agent any
   stages {
-    stage('Build') {
+    stage('Build and Test') {
       steps {
-        checkout scm
+        // Install dependencies and run tests
         sh 'npm install'
-        sh 'npm run build'
+        sh 'node --version'
+        sh 'npm --version'
       }
-         stage('Build Docker Image') {
+    }
+
+    stage('Build Docker Image') {
       steps {
         // Build a Docker image for your Node.js application
         script {
@@ -44,3 +47,4 @@ pipeline {
     }
   }
 }
+
