@@ -1,4 +1,3 @@
-[00:17] Vesper Floss
 pipeline {​​​​​
 
     agent any
