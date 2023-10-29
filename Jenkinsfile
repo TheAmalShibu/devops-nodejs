@@ -33,7 +33,7 @@ pipeline {
             sh "docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD ${registryURL}"
           }
           
-          sh "docker tag ${imageName} ${registryURL}/${imageName}"
+          //sh "docker tag ${imageName} ${registryURL}/${imageName}"
           sh "docker push ${registryURL}/${imageName}"
         }
       }
