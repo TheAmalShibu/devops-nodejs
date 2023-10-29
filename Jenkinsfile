@@ -11,11 +11,13 @@ pipeline {
 
     stage('Push to Docker Hub') {
       steps {
-        // Login to Docker Hub
-        docker.login('docker.io', credentialsId: 'docker-hub-credentials')
+        script {
+          // Login to Docker Hub
+          docker.login('docker.io', credentialsId: 'docker-hub-credentials')
 
-        // Push the Docker image to Docker Hub
-        dockerImage.push()
+          // Push the Docker image to Docker Hub
+          dockerImage.push(message: 'Pushing Docker image to Docker Hub')
+        }
       }
     }
   }
