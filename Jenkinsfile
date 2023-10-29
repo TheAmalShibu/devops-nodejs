@@ -5,7 +5,6 @@ pipeline {
       steps {
         checkout scm
         sh 'npm install'
-        sh 'npm run build'
       }
     }
 
