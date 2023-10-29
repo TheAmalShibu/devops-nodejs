@@ -27,7 +27,7 @@ pipeline {
         // Push the Docker image to a Docker registry (e.g., Docker Hub)
         script {
           def imageName = "my-node-app:latest"
-          def registryURL = "docker.io/your-username" // Replace with your Docker Hub username
+          def registryURL = "docker.io/theamalshibu" // Replace with your Docker Hub username
 
           withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', usernameVariable:
  
@@ -43,14 +43,5 @@ pipeline {
       }
     }
 
-    stage('Deploy') {
-      steps {
-        // Deploy your application (modify this step according to your deployment process)
-
-        
-// This could involve running your Docker image on a container orchestration platform like Kubernetes.
-        sh 'kubectl apply -f deployment.yaml'
-      }
-    }
   }
 }
