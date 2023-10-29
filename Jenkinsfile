@@ -28,7 +28,7 @@ pipeline {
                 // Push the Docker image to a Docker registry (e.g., Docker Hub)
                 script {
                     def imageName = "nodeapp:latest"
-                    def registryURL = "hub.docker.com/theamalshibu" // Replace with your Docker Hub username
+                    def registryURL = "docker.io/theamalshibu" // Replace with your Docker Hub username
 
                     withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
                         sh "docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD ${registryURL}"
