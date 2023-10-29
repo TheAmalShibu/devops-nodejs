@@ -47,6 +47,7 @@ pipeline {
     post {
         success {
             // Cleanup steps if needed
+		echo 'Pipeline executed successfully'
         }
     }
 }
