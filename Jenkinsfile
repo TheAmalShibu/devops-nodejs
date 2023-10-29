@@ -14,7 +14,7 @@ pipeline {
       steps {
         // Build a Docker image for your Node.js application
         script {
-          def imageName = "my-node-app:latest"
+          def imageName = "nodeapp:latest"
           def dockerFile = "Dockerfile" // Path to your Dockerfile
 
           sh "docker build -t ${imageName} -f ${dockerFile} ."
@@ -26,7 +26,7 @@ pipeline {
       steps {
         // Push the Docker image to a Docker registry (e.g., Docker Hub)
         script {
-          def imageName = "my-node-app:latest"
+          def imageName = "nodeapp:latest"
           def registryURL = "docker.io/theamalshibu" // Replace with your Docker Hub username
 
           withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
