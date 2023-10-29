@@ -1,17 +1,20 @@
 pipeline {
   agent any
   stages {
-    stage('Build') {
-      steps {
-        checkout scm
-        sh 'npm install'
-      }
+    stage('Build and Test') {
+            steps {
+                // Install dependencies and run tests
+                sh 'npm install'
+                sh 'node --version'
+                sh 'npm --version'
+            }
+        }
+ 
+        stage('Deploy') {
+            steps {
+                // Deploy your application (modify this step according to your deployment process)
+                sh 'npm start'
+            }
+        }
     }
-
-    stage('Test') {
-      steps {
-        sh 'npm run test'
-      }
-    }
-  }
 }
