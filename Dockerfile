@@ -2,7 +2,7 @@
 FROM node:14
 
 # Set the working directory in the container
-WORKDIR /usr/src/app
+WORKDIR nodeapp
 
 # Copy package.json and package-lock.json to the working directory
 COPY package*.json ./
@@ -11,7 +11,7 @@ COPY package*.json ./
 RUN npm install
 
 # Bundle your source code into the Docker image
-COPY . .
+COPY app.js ./
 
 # Expose a port (e.g., 3000) if your Node.js app listens on a specific port
 EXPOSE 3000
