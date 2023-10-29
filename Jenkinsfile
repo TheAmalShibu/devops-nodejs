@@ -5,19 +5,23 @@ pipeline {
     stage('Build') {
       steps {
         // Build the Docker image
-        sh 'docker build -t my-image:latest . '
+        sh 'docker build -t nodeapp:latest . '
       }
     }
 
     stage('Push to Docker Hub') {
       steps {
-        script {
-          // Push the Docker image to Docker Hub
-          docker.withRegistry('docker.io', credentialsId: 'docker-hub-credentials') {
-            dockerImage.push()
-          }
-        }
+        // Login to Docker Hub
+        docker.login('docker.io', credentialsId: 'docker-hub-credentials')
+
+        // Tag the Docker image
+        dockerImage.tag('docker.io/theamalshibu/nodeapp:latest')
+
+        // Push the Docker image to Docker Hub
+        dockerImage.push()
       }
     }
   }
 }
+
+
