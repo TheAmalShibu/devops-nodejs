@@ -29,8 +29,12 @@ pipeline {
           def imageName = "my-node-app:latest"
           def registryURL = "docker.io/theamalshibu" // Replace with your Docker Hub username
 
-          withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
-            sh "docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD ${registryURL}"
+          withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', usernameVariable:
+ 
+'DOCKER_USERNAME', passwordVariable:
+ 
+'DOCKER_PASSWORD')]) {
+            sh "docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD ${imageName}"
           }
           
           sh "docker tag ${imageName} ${registryURL}/${imageName}"
@@ -38,6 +42,6 @@ pipeline {
         }
       }
     }
+
   }
 }
-
