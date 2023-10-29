@@ -11,14 +11,16 @@ pipeline {
 
     stage('Push to Docker Hub') {
       steps {
-        // Login to Docker Hub
-        docker.login('docker.io', credentialsId: 'docker-hub-credentials')
+        script {
+          // Login to Docker Hub
+          docker.login('docker.io', credentialsId: 'docker-hub-credentials')
 
-        // Tag the Docker image
-        dockerImage.tag('docker.io/theamalshibu/nodeapp:latest')
+          // Tag the Docker image
+          dockerImage.tag('docker.io/theamalshibu/nodeapp:latest')
 
-        // Push the Docker image to Docker Hub
-        dockerImage.push()
+          // Push the Docker image to Docker Hub
+          dockerImage.push(message: 'Pushing Docker image to Docker Hub')
+        }
       }
     }
   }
