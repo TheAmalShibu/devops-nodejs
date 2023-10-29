@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_HUB_CREDENTIALS = credentials('docker-hub-credentials')
+        DOCKER_HUB_CREDENTIALS = credentials('docker_new')
         DOCKER_IMAGE_NAME = 'nodeapp'
         GIT_REPO_URL = 'https://github.com/TheAmalShibu/devops-nodejs.git'
     }
