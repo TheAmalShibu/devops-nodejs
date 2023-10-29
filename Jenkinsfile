@@ -28,7 +28,7 @@ pipeline {
          withCredentials([usernamePassword(credentialsId: 'docker_new', usernameVariable:
 'DOCKER_USERNAME', passwordVariable:
 'DOCKER_PASSWORD')]) {
-            sh "docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD ${registryURL}"
+            sh "docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD"
           }
           sh "docker tag ${imageName} ${registryURL}/${imageName}"
           sh "docker push ${registryURL}/${imageName}"
