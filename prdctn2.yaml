@@ -1,0 +1,39 @@
+---
+- name: My first Ansible playbook
+  hosts: Targets_to_deploy
+  become: yes
+  tasks:
+    - name: Update package cache and install dependencies
+      apt:
+        update_cache: yes
+        pkg:
+          - python3-pip
+          - build-essential
+
+    - name: Install Docker
+      apt:
+        name:
+          - docker-ce
+          - docker-ce-cli
+          - containerd.io
+          - docker-buildx-plugin
+          - docker-compose-plugin
+        state: present
+
+    - name: Start Docker service
+      service:
+        name: docker
+        enabled: yes
+        state: started
+
+    - name: Pull Docker image from the registry
+      docker_image:
+        name: theamalshibu/nodeapp:latest
+        source: pull
+
+    - name: Run Docker container
+      docker_container:
+        name: node_app_container
+        image: theamalshibu/nodeapp:latest
+        ports:
+          - "3000:3000"
